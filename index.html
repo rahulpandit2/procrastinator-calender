@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Grid</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div id="wraper">
+        <div id="app">
+        <label for="dobInput">Enter your date of birth:</label>
+        <input type="date" id="dobInput" value="">
+        <div id="error" class="error-message"></div>
+        <button id="calculateBtn" onclick="calculateWeeks()">Calculate</button>
+        <select id="recentDates" onchange="loadSelectedDate()">
+            <option value="">Select a recent date</option>
+        </select>
+        <button id="clearHistoryBtn" onclick="clearHistory()">Clear History</button>
+        <button id="clearResultsBtn" onclick="clearResults()">Clear Results</button>
+        <div id="lifeGrid" class="visible"></div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

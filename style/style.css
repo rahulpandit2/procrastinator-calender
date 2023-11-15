@@ -1,0 +1,57 @@
+#wraper {
+    display: flex;
+    justify-content: center;
+}
+
+#app {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#lifeGrid {
+    display: grid;
+    grid-template-columns: repeat(78, 15px);
+    grid-template-rows: repeat(60, 15px);
+    grid-gap: 1px;
+    margin-top: 20px;
+}
+
+.cell {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+#dobInput,
+#calculateBtn,
+#clearHistoryBtn,
+#clearResultsBtn,
+#recentDates {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    background-color: #555555;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
