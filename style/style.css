@@ -9,7 +9,7 @@
 }
 
 #lifeGrid {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(78, 15px);
     grid-template-rows: repeat(60, 15px);
     grid-gap: 1px;
@@ -52,6 +52,10 @@
 }
 
 .error-message {
-    color: red;
+    color: yellow;  /* Set the text color to yellow */
+    background-color: black; /* Set a background color for better visibility */
+    padding: 5px; /* Add some padding for better aesthetics */
     margin-top: 5px;
+    border-radius: 5px; /* Add rounded corners */
+    font-weight: bold; /* Make the text bold */
 }

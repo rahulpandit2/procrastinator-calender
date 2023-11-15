@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Load the last user input
     loadLastUserInput();
-    // Automatically calculate and display results
-    calculateWeeks();
     // Load recent dates from local storage
     loadRecentDates();
 });
@@ -18,17 +16,23 @@ function calculateWeeks() {
     const lifeGrid = document.getElementById("lifeGrid");
     const errorDiv = document.getElementById("error");
 
+    // Hide the grid initially
+    lifeGrid.style.display = "none";
+
     const dob = new Date(dobInput.value);
     const currentDate = new Date();
     const maxAllowedDate = new Date(currentDate.getFullYear() - 90, currentDate.getMonth(), currentDate.getDate());
 
     if (isNaN(dob.getTime()) || dob > currentDate || dob < maxAllowedDate) {
         errorDiv.textContent = "Please enter a valid date of birth between 90 years ago and today.";
+        errorDiv.style.display = "block"; // Show the error message
         return;
     }
 
     errorDiv.textContent = "";  // Clear any previous error message
+    errorDiv.style.display = "none"; // Hide the error message
 
+    // Calculate weeks and display the grid
     const weeksPassed = Math.floor((currentDate - dob) / (1000 * 60 * 60 * 24 * 7));
 
     saveDate(dob);
@@ -52,7 +56,10 @@ function calculateWeeks() {
         }
     }
 
-    lifeGrid.classList.add("visible");
+    // Show the grid after validating input
+    lifeGrid.style.display = "grid";
+
+    // Load recent dates
     loadRecentDates();
 }
 
@@ -99,6 +106,7 @@ function loadLastUserInput() {
     const lastUserInput = localStorage.getItem("lastUserInput");
     if (lastUserInput) {
         document.getElementById("dobInput").value = lastUserInput;
+        calculateWeeks(); // Automatically calculate weeks if there's a last user input
     }
 }
 
@@ -113,7 +121,7 @@ function clearHistory() {
 function clearResults() {
     // Clear the lifeGrid and hide it
     document.getElementById("lifeGrid").innerHTML = "";
-    document.getElementById("lifeGrid").classList.remove("visible");
+    document.getElementById("lifeGrid").style.display = "none";
 
     // Remove cached data related to results
     localStorage.removeItem("recentDates");

@@ -11,7 +11,7 @@
         <div id="app">
         <label for="dobInput">Enter your date of birth:</label>
         <input type="date" id="dobInput" value="" onkeydown="handleEnter(event)">
-        <div id="error" class="error-message"></div>
+        <div id="error" class="error-message">Please Enter a Date between 90 years and today</div>
         <button id="calculateBtn" onclick="calculateWeeks()">Calculate</button>
         <select id="recentDates" onchange="loadSelectedDate()">
             <option value="">Select a recent date</option>
