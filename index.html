@@ -10,7 +10,7 @@
     <div id="wraper">
         <div id="app">
         <label for="dobInput">Enter your date of birth:</label>
-        <input type="date" id="dobInput" value="">
+        <input type="date" id="dobInput" value="" onkeydown="handleEnter(event)">
         <div id="error" class="error-message"></div>
         <button id="calculateBtn" onclick="calculateWeeks()">Calculate</button>
         <select id="recentDates" onchange="loadSelectedDate()">

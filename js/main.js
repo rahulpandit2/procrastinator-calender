@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     loadRecentDates();
 });
 
+function handleEnter(event) {
+    if (event.key === 'Enter') {
+        calculateWeeks();
+    }
+}
+
 function calculateWeeks() {
     const dobInput = document.getElementById("dobInput");
     const lifeGrid = document.getElementById("lifeGrid");
