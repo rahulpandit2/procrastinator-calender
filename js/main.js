@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Load the last user input
     loadLastUserInput();
-    // Load recent dates from local storage
     loadRecentDates();
 });
 
@@ -25,30 +23,30 @@ function calculateWeeks() {
 
     if (isNaN(dob.getTime()) || dob > currentDate || dob < maxAllowedDate) {
         errorDiv.textContent = "Please enter a valid date of birth between 90 years ago and today.";
-        errorDiv.style.display = "block"; // Show the error message
+        errorDiv.style.display = "block";
         return;
     }
 
-    errorDiv.textContent = "";  // Clear any previous error message
-    errorDiv.style.display = "none"; // Hide the error message
+    errorDiv.textContent = "";
+    errorDiv.style.display = "none";
 
-    // Calculate weeks and display the grid
-    const weeksPassed = Math.floor((currentDate - dob) / (1000 * 60 * 60 * 24 * 7));
-
-    saveDate(dob);
+    const availableWidth = window.innerWidth || document.documentElement.clientWidth;
+    const optimalColumns = Math.floor(availableWidth / 15); // Assuming each cell has a width of 15px
 
     lifeGrid.innerHTML = "";
 
     for (let row = 0; row < 60; row++) {
-        for (let col = 0; col < 78; col++) {
+        for (let col = 0; col < optimalColumns; col++) {
             const cell = document.createElement("div");
             cell.classList.add("cell");
 
-            if (row * 78 + col < weeksPassed) {
+            const currentWeek = row * optimalColumns + col;
+
+            if (currentWeek < weeksPassed) {
                 cell.classList.add("red");
-            } else if (row * 78 + col === weeksPassed) {
+            } else if (currentWeek === weeksPassed) {
                 cell.classList.add("yellow");
-            } else if (row * 78 + col - weeksPassed <= 10) {
+            } else if (currentWeek - weeksPassed <= 10) {
                 cell.classList.add("green");
             }
 
@@ -56,10 +54,7 @@ function calculateWeeks() {
         }
     }
 
-    // Show the grid after validating input
     lifeGrid.style.display = "grid";
-
-    // Load recent dates
     loadRecentDates();
 }
 

@@ -1,15 +1,44 @@
 *, html, body {
     background-color: #202020;
+    font-family: 'Arial', sans-serif;
     color: #FFFFFF;
     padding: 0;
     margin: 0;
+}
+
+/* Add styles for navigation */
+#navigation {
+    background-color: #202020; /* Adjust background color as needed */
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.nav-button {
+    /* margin: 0 10px; */
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 5px 30px;
+    font-size: 16px;
+    color: #fff; /* Adjust text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    border-top: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+    transition: ease-in 0.1s;
+}
+
+.nav-button:hover {
+    background-color: #555555;
+    border: none;
 }
 
 #wraper {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    max-width: fit-content;
     width: 100%;
 }
 
